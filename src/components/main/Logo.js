@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import logo from './logo.png'
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 class Logo extends Component {
     render() {
