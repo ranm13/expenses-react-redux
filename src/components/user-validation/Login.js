@@ -1,11 +1,40 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import { useDispatch } from 'react-redux'
+import { login } from './../../actions/userActions';
 
-class Login extends Component {
-    render() {
+
+function Login(){
+    const [userInfo, setUserInfo] = useState({
+        username: "",
+        password: ""
+    })
+    const dispatch = useDispatch()
+
         return (
-        <div>
-    
-        </div>)
-    }
+            <Grid container direction="column" justify="center" alignItems="center" spacing={10} >
+                <Paper style={{padding: "15px", opacity: "0.95"}}>
+                    <Grid container direction="column" alignItems="center" spacing={3}>
+                            <Grid item>
+                                <TextField label="Username" 
+                                    onChange={e => setUserInfo({ ...userInfo, username: e.target.value})}/>
+                            </Grid>
+                            <Grid item>
+                                <TextField label="Password" type="password"
+                                     onChange={e => setUserInfo({ ...userInfo, password: e.target.value})}/>
+                            </Grid>
+                            <Grid item>
+                                <Button variant="contained" color="primary"
+                                   onClick={() => dispatch(login(userInfo))}>Login</Button>
+                            </Grid>
+                        </Grid>
+                    <Typography variant="subtitle2" >Haven't got a user yet !? Click here to Sign up</Typography>
+                </Paper>
+            </Grid>
+            )
 }
 export default Login

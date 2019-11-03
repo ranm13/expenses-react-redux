@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const users = require('./server/routes/UserApi')
 const transactions = require('./server/routes/TransactionsApi')
 const mongoose = require('mongoose')
-mongoose.connect("mongodb://localhost/bankDB", { useNewUrlParser: true })
+mongoose.connect("mongodb://localhost/bankDB", { useNewUrlParser: true,  useUnifiedTopology: true })
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))

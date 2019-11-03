@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid'
 class Logo extends Component {
     render() {
         return (
-        <Grid container justify="center" alignItems="center">
+        <Grid container justify="center" alignItems="center" >
             <img src={logo} alt="Bank Hashualim logo" width="150px"></img>
             <Typography variant="h1">
                 Bank Hashualim

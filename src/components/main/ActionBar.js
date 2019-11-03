@@ -11,19 +11,19 @@ class ActionBar extends Component {
             <Paper>
                 <Grid container alignItems="center" spacing={6}>
                     <Grid item>
-                        <TextField label="amount" name={"amount"} />
+                        <TextField label="Amount" name={"amount"} />
                     </Grid>
                     <Grid item>
-                        <TextField label="vendor" name={"vendor"} />
+                        <TextField label="Vendor" name={"vendor"} />
                     </Grid>
                     <Grid item>
                         <TextField label="Category" name={"firstName"} />
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color="primary" >Deposit</Button>
+                        <Button variant="contained" color="primary" style={{padding: "15px"}}>Deposit</Button>
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color="secondary" >Withdraw</Button>
+                        <Button variant="contained" color="secondary" style={{padding: "15px"}} >Withdraw</Button>
                     </Grid>
                 </Grid>
             </Paper>
