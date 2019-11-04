@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
@@ -29,10 +30,10 @@ function Login(){
                             </Grid>
                             <Grid item>
                                 <Button variant="contained" color="primary"
-                                   onClick={() => dispatch(login(userInfo))}>Login</Button>
+                                   onClick={() => dispatch(login(userInfo))} component={Link} to="/main">Login</Button>
                             </Grid>
                         </Grid>
-                    <Typography variant="subtitle2" >Haven't got a user yet !? Click here to Sign up</Typography>
+                    <Typography variant="subtitle2" component={Link} to="/signup">Haven't got a user yet !? Click here to Sign up</Typography>
                 </Paper>
             </Grid>
             )

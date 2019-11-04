@@ -1,14 +1,14 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Logo from './main/Logo';
 import ActionBar from './main/ActionBar';
+import Transactions from './transactions-table/Transactions';
 
-class Layout extends Component {
-    render() {
-        return (
+function Layout(){
+    return (
         <div>
             <Logo />
             <ActionBar />
+            <Transactions />
         </div>)
-    }
 }
 export default Layout

@@ -1,12 +1,11 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-class ActionBar extends Component {
-    render() {
-        return (
+function ActionBar(){
+    return (
         <Grid container justify="center">
             <Paper>
                 <Grid container alignItems="center" spacing={6}>
@@ -29,6 +28,5 @@ class ActionBar extends Component {
             </Paper>
         </Grid>
         )
-    }
 }
 export default ActionBar

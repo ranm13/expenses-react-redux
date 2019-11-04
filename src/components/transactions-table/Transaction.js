@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 
 class Transaction extends Component {
-
     getIconByTransactionType = () =>{
         switch(this.props.transaction.type){
             case("withdraw"):
