@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 import { login } from './../../actions/userActions';
 
 
-function Login(){
+const Login = function (){
     const [userInfo, setUserInfo] = useState({
         username: "",
         password: ""

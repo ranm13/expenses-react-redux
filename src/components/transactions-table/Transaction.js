@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 class Transaction extends Component {
     getIconByTransactionType = () =>{

@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import { useDispatch } from 'react-redux'
 import { signup } from './../../actions/userActions';
 
-function Signup(){
+const Signup = function (){
     const [userInfo, setUserInfo] = useState({
         username: "",
         firstName: "",

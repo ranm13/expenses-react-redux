@@ -1,14 +1,17 @@
 import React from 'react'
 import Logo from './main/Logo';
+import { useSelector } from 'react-redux'
 import ActionBar from './main/ActionBar';
 import Transactions from './transactions-table/Transactions';
 
-function Layout(){
+const Layout = function(){
+    const userData = useSelector(state => state.userData)
     return (
         <div>
             <Logo />
+            <h1>{userData.balance}</h1>
             <ActionBar />
-            <Transactions />
+            {userData._id? <Transactions /> : null}
         </div>)
 }
 export default Layout

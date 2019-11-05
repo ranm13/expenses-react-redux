@@ -15,19 +15,19 @@ router.post('/transaction/:userId', function(req, res){
     let userId = req.params.userId
     let newTransaction = new Transaction(req.body)
     newTransaction.committedBy = userId
-    console.log(newTransaction)
+    newTransaction.date = new Date()
     newTransaction.save()
     User.findById(userId).exec(function(err, user){
         switch(newTransaction.type){
             case("withdraw"): 
-                user.money -= newTransaction.amount
+                user.balance -= newTransaction.amount
                 break
             case("deposit"): 
-                user.money += newTransaction.amount
+                user.balance += newTransaction.amount
                 break
         }
         user.save()
-        res.send(user)
+        res.send({balance: user.balance, newTransaction})
     })
 })
 
@@ -38,14 +38,16 @@ router.delete('/transaction/:userId/:transactionId', async function(req, res){
     User.findById(userId).exec(function(err, user){
         switch(deletedTransaction.type){
             case("withdraw"): 
-                user.money += deletedTransaction.amount
+                user.balance += deletedTransaction.amount
                 break
             case("deposit"): 
-                user.money -= deletedTransaction.amount
+                user.balance -= deletedTransaction.amount
                 break
         }
         user.save()
-        res.send(user)
+        Transaction.find({"committedBy": userId} ).exec(function(err, transactions){
+            res.send({balance: user.balance, transactions})
+        })
     })
 })
 

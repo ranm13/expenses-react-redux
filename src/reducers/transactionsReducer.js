@@ -1,9 +1,11 @@
 const transactionsReducer = (state = [], action) =>{
     switch(action.type){
         case('LOADTRANSCTIONS'):
-            return ['Fully loaded']
+            return [...action.payload]
+        case('PUSHTRANSACTION'): 
+            return [ action.payload.newTransaction , ...state]
         default: 
-            return [] 
+            return state 
     }
 }
 
