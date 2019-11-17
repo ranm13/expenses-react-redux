@@ -17,7 +17,7 @@ const getIconByTransactionType = function(transactionType){
 
 const Transaction = function(props) {
     let transaction = props.transaction
-    const userId = useSelector(state => state.userData._id)
+    const userId = useSelector(state => state.auth.user.id)
     const dispatch = useDispatch()
     return (
         <TableRow >

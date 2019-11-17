@@ -1,31 +1,34 @@
 import axios from 'axios'
 
 export const loadTransactions = (userId, month) => dispatch =>{
-    let response = axios.get(`http://localhost:4000/transactions/bymonth/${userId}/${month}`)
-        response.then(({data})=> {
+    axios.get(`http://localhost:4000/transactions/bymonth/${userId}/${month}`)
+        .then(({data})=> {
             dispatch({
-                type: 'LOADTRANSCTIONS',
+                type: 'LOAD_TRANSCTIONS',
                 payload: data
             })
         })
+        .catch(err => console.log(err))
 }
 
 export const deleteTransaction = (userId, transactionId) => dispatch =>{
-    let response = axios.delete(`http://localhost:4000/transactions//transaction/${userId}/${transactionId}`)
-        response.then(({data})=> {
+    axios.delete(`http://localhost:4000/transactions//transaction/${userId}/${transactionId}`)
+        .then(({data})=> {
             dispatch({
-                type: 'DELETETRANSACTION',
+                type: 'DELETE_TRANSACTION',
                 payload: data
             })
         })
+        .catch(err => console.log(err))
 }
 
 export const pushTransaction = (userId, transaction) => dispatch =>{
-    let response = axios.post(`http://localhost:4000/transactions//transaction/${userId}`, transaction)
-        response.then(({data})=> {
+  axios.post(`http://localhost:4000/transactions//transaction/${userId}`, transaction)
+        .then(({data})=> {
             dispatch({
-                type: 'PUSHTRANSACTION',
+                type: 'PUSH_TRANSACTION',
                 payload: data
             })
         })
+        .catch(err => console.log(err))
 }

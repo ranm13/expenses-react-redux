@@ -1,4 +1,4 @@
-import userReducer from './userReducer';
+import balanceReducer from './balanceReducer';
 import transactionsReducer from './transactionsReducer';
 import authReducers from './authReducers';
 import errorReducers from './errorReducers';
@@ -7,7 +7,7 @@ import { combineReducers } from 'redux'
 const allReducers = combineReducers({
     auth: authReducers,
     errors: errorReducers,
-    userData: userReducer,
+    balance: balanceReducer,
     transactions: transactionsReducer
 })
 

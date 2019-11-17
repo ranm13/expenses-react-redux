@@ -1,16 +1,13 @@
 import React from 'react'
-import Logo from './main/Logo';
-import { useSelector } from 'react-redux'
-import ActionBar from './main/ActionBar';
+import Logo from './layout/Logo';
+import ActionBar from './layout/ActionBar';
 import Transactions from './transactions-table/Transactions';
 import Grid from '@material-ui/core/Grid';
 import ChartsContainer from './analytics/ChartsContainer';
 import AppBar from '@material-ui/core/AppBar';
-import SideBar from './main/SideBar';
-
+import SideBar from './layout/SideBar';
 
 const Dashboard = function(){
-    const userData = useSelector(state => state.userData)
     return (
         <div>
         <AppBar position="relative" style={{color: 'black', backgroundColor: 'white'}}>
@@ -25,7 +22,7 @@ const Dashboard = function(){
                     </Grid>
                     <Grid item>
                         <Grid container spacing={10} direction='row' >
-                            {userData._id? <Transactions /> : null}
+                            <Transactions /> 
                             <ChartsContainer /> 
                         </Grid>
                     </Grid>

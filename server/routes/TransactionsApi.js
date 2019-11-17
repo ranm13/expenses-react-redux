@@ -51,4 +51,13 @@ router.delete('/transaction/:userId/:transactionId', async function(req, res){
     })
 })
 
+router.get('/balance/:userId', function(req, res){
+    let userId = req.params.userId
+    User.findById(userId).exec(function(err, user){
+        res.send({balance: user.balance})
+    })
+})
+
+
+
 module.exports = router

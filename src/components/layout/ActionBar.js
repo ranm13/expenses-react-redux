@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useSelector, useDispatch} from 'react-redux'
-import { pushTransaction } from './../../actions/transactionsActions';
+import { pushTransaction } from '../../actions/transactionsActions';
 
 const ActionBar = function(){
     const [transactionInput, setTransactionInput] = useState({
@@ -13,7 +13,7 @@ const ActionBar = function(){
         category: ""
     })
     
-    const userId = useSelector(state => state.userData._id)
+    const userId = useSelector(state => state.auth.user.id)
     const dispatch = useDispatch()
 
     return (

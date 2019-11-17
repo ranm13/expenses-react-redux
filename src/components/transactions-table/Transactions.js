@@ -16,7 +16,7 @@ const Transactions = function(){
     useEffect(() => {
         let month = (new Date()).getMonth()
         dispatch(loadTransactions(userId, month))
-      }, [])
+      }, [dispatch ,userId])
     return (
       <Grid item >
         <Table size="small">

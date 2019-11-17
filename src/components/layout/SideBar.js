@@ -5,22 +5,23 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Grid } from '@material-ui/core';
-import { logoutUser } from './../../actions/authActions';
+import { logoutUser } from '../../actions/authActions';
 
 
 export default function SideBar() {
-const userData = useSelector(state => state.userData)
+const userData = useSelector(state => state.auth.user)
+const balance = useSelector(state => state.balance)
 const dispatch = useDispatch()
 
   return (
     <Grid item style={{height: '85vh'}} md={2}>
         <List>
             <ListItem  key={'name'}>
-                <ListItemText primary={'Hello ' + userData.firstName} />
+                <ListItemText primary={'Hello ' + userData.name} />
             </ListItem>
             <Divider />
             <ListItem  key={'balance'}>
-                <ListItemText primary={'Balance:' + userData.balance} />
+                <ListItemText primary={'Balance: ' + balance} />
             </ListItem>
             <ListItem button key={'logout'}>
                 <ListItemText primary={'Logout'}  onClick={() => dispatch(logoutUser())} />

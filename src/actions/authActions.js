@@ -17,14 +17,17 @@ export const registerUser = (userData, history) => dispatch => {
 export const loginUser = userData => dispatch => {
   axios
     .post("http://localhost:4000/users/login", userData)
-    .then(res => {
+    .then(async res => {
       // Set token to localStorage
       const { token } = res.data;
       localStorage.setItem("jwtToken", token);
       setAuthToken(token);
       const decoded = jwt_decode(token);
       // Set current user
+    
       dispatch(setCurrentUser(decoded));
+      console.log(decoded.id)
+      dispatch(loadBalance(decoded.id))
     })
     .catch(err =>
       dispatch({
@@ -52,4 +55,16 @@ export const logoutUser = () => dispatch => {
   localStorage.removeItem("jwtToken");
   setAuthToken(false);
   dispatch(setCurrentUser({}));
+};
+
+export const loadBalance = userId => dispatch => {
+  axios
+    .get(`http://localhost:4000/transactions/balance/${userId}`)
+    .then(res => dispatch({
+      type: ('LOAD_BALANCE'),
+      payload: res.data.balance
+    }))
+    .catch(err => console.log(err)
+      
+    );
 };
