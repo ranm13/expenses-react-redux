@@ -3,10 +3,14 @@ import TransactionsHeaders from './TransactionsHeaders';
 import Transaction from './Transaction';
 import { useSelector, useDispatch} from 'react-redux'
 import { loadTransactions } from './../../actions/transactionsActions';
+import Grid from '@material-ui/core/Grid';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+
 
 const Transactions = function(){
     const transactions = useSelector(state => state.transactions)
-    const userId = useSelector(state => state.userData._id)
+    const userId = useSelector(state => state.auth.user.id)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -14,12 +18,18 @@ const Transactions = function(){
         dispatch(loadTransactions(userId, month))
       }, [])
     return (
-        <div>
-            <TransactionsHeaders />
+      <Grid item >
+        <Table size="small">
+          <TransactionsHeaders />
+          <TableBody>
             {transactions[0]? 
-                transactions.map(t => <Transaction key={t._id} transaction={t}/>):
-                null
-                }
-        </div>)
+              transactions
+                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                .map(t => <Transaction key={t._id} transaction={t}/>):
+              null
+              }
+          </TableBody>
+        </Table >
+      </Grid>)
 }
 export default Transactions

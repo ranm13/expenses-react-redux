@@ -18,7 +18,7 @@ const ActionBar = function(){
 
     return (
         <Grid container justify="center">
-            <Paper>
+            <Paper style={{padding: "15px", backgroundColor: "silver", marginTop: '15px'}}>
                 <Grid container alignItems="center" spacing={6}>
                     <Grid item>
                         <TextField label="Amount" name={"amount"} 
@@ -33,11 +33,11 @@ const ActionBar = function(){
                           onChange={e => setTransactionInput({ ...transactionInput, category: e.target.value})}/>
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color="primary" style={{padding: "15px"}}
+                        <Button variant="contained" style={{padding: "15px", backgroundColor: "green", color: 'white'}}
                          onClick={() => dispatch(pushTransaction(userId, {...transactionInput, type: 'deposit'}))} >Deposit</Button>
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color="secondary" style={{padding: "15px"}}
+                        <Button variant="contained" style={{padding: "15px" , backgroundColor: "red" , color: 'white'}}
                         onClick={() => dispatch(pushTransaction(userId, {...transactionInput, type: 'withdraw'}))}>Withdraw</Button>
                     </Grid>
                 </Grid>

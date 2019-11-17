@@ -1,11 +1,15 @@
-import React, {Component} from 'react'
+import React from 'react'
+import Grid from '@material-ui/core/Grid'
+import DepositsPieChart from './DepositsPieChart';
+import WithdrawsPieChart from './WithdrawsPieChart';
 
-class ChartsContainer extends Component {
-    render() {
+const ChartsContainer = function(){
         return (
-        <div>
-    
-        </div>)
-    }
+            <Grid item >
+                <Grid container direction='row' spacing={6}>
+                    <DepositsPieChart />
+                    <WithdrawsPieChart />
+                </Grid>
+            </Grid>)
 }
 export default ChartsContainer

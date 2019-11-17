@@ -1,11 +1,16 @@
 import React from 'react'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
 
 const TransactionsHeaders = function (){
     return (
-        <div className="transactions-headers">
-            <div className="headers-item">Amount</div>
-            <div className="headers-item">Vendor</div>
-            <div className="headers-item">Date</div>
-        </div>)
+        <TableHead>
+            <TableRow>
+                <TableCell className="headers-item">Amount</TableCell>
+                <TableCell className="headers-item">Vendor</TableCell>
+                <TableCell className="headers-item">Date</TableCell>
+            </TableRow>
+        </TableHead>)
 }
 export default TransactionsHeaders
