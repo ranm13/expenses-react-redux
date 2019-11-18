@@ -1,25 +1,52 @@
+
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Grid } from '@material-ui/core';
+import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 
 
+const drawerWidth = 240;
+const useStyles = makeStyles(theme => ({
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    top: 150,
+    zIndex: 0,
+    backgroundColor: "red",
+    color: "white"
+  }
+}));
+
 export default function SideBar() {
-const userData = useSelector(state => state.auth.user)
-const balance = useSelector(state => state.balance)
-const dispatch = useDispatch()
+    const userData = useSelector(state => state.auth.user)
+    const balance = useSelector(state => state.balance)
+    const dispatch = useDispatch()
+    const classes = useStyles();
 
   return (
-    <Grid item style={{height: '85vh'}} md={2}>
+    <div>
+      <CssBaseline />
+      <Drawer
+        className={classes.drawer}
+        variant="permanent"
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
         <List>
             <ListItem  key={'name'}>
                 <ListItemText primary={'Hello ' + userData.name} />
             </ListItem>
-            <Divider />
+            <Divider style={{backgroundColor: 'white'}}/>
             <ListItem  key={'balance'}>
                 <ListItemText primary={'Balance: ' + balance} />
             </ListItem>
@@ -27,6 +54,7 @@ const dispatch = useDispatch()
                 <ListItemText primary={'Logout'}  onClick={() => dispatch(logoutUser())} />
             </ListItem>
         </List>
-    </Grid>
+      </Drawer>
+    </div>
   );
 }

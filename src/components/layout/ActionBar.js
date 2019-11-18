@@ -20,9 +20,9 @@ const ActionBar = function(){
     const dispatch = useDispatch()
 
     return (
-        <Grid container justify="center">
-            <Paper style={{padding: "15px", backgroundColor: "silver", marginTop: '15px'}}>
-                <Grid container alignItems="center" spacing={6}>
+        <Grid container >
+            <Paper style={{padding: "15px",marginLeft: '1.5vw', marginTop: '15px', width:'85vw'}}>
+                <Grid container  direction="row" justify="center" alignItems="center" spacing={10}>
                     <Grid item>
                         <TextField label="Amount" type="number" error={errors.amount ? true: false}
                          onChange={e => setTransactionInput({ ...transactionInput, amount: e.target.value})}/>
