@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const validateTransactionInput = require("../validation/transaction");
 const Transaction = require('../models/Transaction')
 const User = require('../models/User')
 
@@ -12,10 +13,13 @@ router.get('/bymonth/:userId/:month', function(req, res){
 })
 
 router.post('/transaction/:userId', function(req, res){
+    const { errors, isValid } = validateTransactionInput(req.body);
+    if(!isValid){
+      return res.status(400).json(errors);
+    }
     let userId = req.params.userId
     let newTransaction = new Transaction(req.body)
     newTransaction.committedBy = userId
-    newTransaction.date = new Date()
     newTransaction.save()
     User.findById(userId).exec(function(err, user){
         switch(newTransaction.type){
