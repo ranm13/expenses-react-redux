@@ -1,7 +1,8 @@
 import React from 'react'
 import { PieChart, Pie, Cell, Tooltip} from 'recharts';
 import { useSelector } from 'react-redux'
-import { Grid } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 const countWithdrawsByCategory = function(transactions){
     let counter = {}
@@ -20,24 +21,26 @@ const countWithdrawsByCategory = function(transactions){
 }
 
 const WithdrawsPieChart = function() {
-    const COLORS = [`#795548`, `#34495e`, `#95a5a6`];
+    const COLORS = [`#6D6A75`, `#3C362A`, `#663F46`, '#313E50', '#788585'];
     const transactions = useSelector(state => state.transactions)
     let withdraws = countWithdrawsByCategory(transactions)
     return (
-      <Grid item>
-        This Month Withdraws
-            <PieChart   width={300} height={300}>
-              <Pie
-                data={withdraws}
-                dataKey="value"
-                label
-                fill="#8884d8"
-                outerRadius={90}>
-                {withdraws.map(d => <Cell key={`cell-${withdraws.indexOf(d)}`} fill={COLORS[withdraws.indexOf(d)]} />)}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-        </Grid>    
-      );
+      <Grid item style={{marginLeft: '5vw'}}>
+        <Typography variant="h5">
+          This Month Withdraws
+        </Typography>
+        <PieChart width={400} height={520} >
+          <Pie
+            data={withdraws}
+            dataKey="value"
+            label
+            fill="#8884d8"
+            outerRadius={150}>
+            {withdraws.map(d => <Cell key={`cell-${withdraws.indexOf(d)}`} fill={COLORS[withdraws.indexOf(d)]} />)}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </Grid>    
+    );
 }
 export default WithdrawsPieChart

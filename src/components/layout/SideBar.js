@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     top: 150,
     zIndex: 0,
-    backgroundColor: "red",
+    backgroundColor: "#E4061F",
     color: "white"
   }
 }));

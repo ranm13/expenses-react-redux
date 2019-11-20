@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import { Paper } from '@material-ui/core';
+import Loader from 'react-loader-spinner'
 
 
 const Transactions = function(){
@@ -20,7 +21,7 @@ const Transactions = function(){
       }, [dispatch ,userId])
     return (
       <Grid item >
-        <Paper style={{padding: "15px", marginLeft: '1.5vw', marginRight: '1.5vw', width:'30vw', height:'63vh'}}>
+        <Paper className="table-container">
           <Table size="small">
             <TransactionsHeaders />
             <TableBody>
@@ -28,7 +29,13 @@ const Transactions = function(){
                 transactions
                   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                   .map(t => <Transaction key={t._id} transaction={t}/>):
-                null
+                  <Loader
+                  type="Puff"
+                  color="#E4061F"
+                  height={100}
+                  width={100}
+                  timeout={4000} 
+                   />
                 }
             </TableBody>
           </Table >

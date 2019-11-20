@@ -7,8 +7,8 @@ import { Paper } from '@material-ui/core';
 const ChartsContainer = function(){
         return (
             <Grid item >
-                <Paper style={{padding: "15px", width:'40vw'}}>
-                    <Grid container direction='row' spacing={2}>
+                <Paper className="charts-container">
+                    <Grid container direction='row'>
                         <DepositsPieChart />
                         <WithdrawsPieChart />
                     </Grid>

@@ -11,7 +11,7 @@ import SideBar from './layout/SideBar';
 const Dashboard = function(){
     return (
         <div >
-        <AppBar position="relative" style={{color: 'black', backgroundColor: 'white'}}>
+        <AppBar position="relative" style={{color: 'black', backgroundColor: '#FFFFFA'}}>
             <Logo />
         </AppBar>  
         <Grid container spacing={10} direction='row' >
