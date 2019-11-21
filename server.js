@@ -5,6 +5,7 @@ const app = express();
 const passport = require("passport");
 const users = require('./server/routes/UsersApi')
 const transactions = require('./server/routes/TransactionsApi')
+const path = require('path')	
 
 const db = require("./config/keys").mongoURI;
 mongoose.connect(db,{ useNewUrlParser: true ,  useUnifiedTopology: true })
