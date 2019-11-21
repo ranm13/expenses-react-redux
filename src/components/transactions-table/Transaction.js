@@ -28,7 +28,7 @@ const Transaction = function(props) {
             <TableCell className="transaction-item">{moment(transaction.date).format('LLL')}</TableCell>
             <TableCell className="transaction-item">
                 <IconButton  onClick={() => dispatch(deleteTransaction(userId, transaction._id))}>
-                    <DeleteForeverIcon style={{color: "#E4061F"}}/>
+                    <DeleteForeverIcon  style={{color: "#E4061F"}}/>
                 </IconButton>
             </TableCell>
         </TableRow >)

@@ -31,7 +31,7 @@ const Register = function(){
 
 return (
   <Grid container justify="center" alignItems="center">
-    <Paper elevation={4} style={{ margin: "25vh", padding: "5vh", width: "50vw", opacity: "0.95" }}>
+    <Paper className="register-form">
       <form noValidate onSubmit={e => {
       e.preventDefault()
       dispatch(registerUser(registerInput, history))}}>
@@ -68,8 +68,8 @@ return (
                     </Grid>
                 </Grid>
             </Grid>
-          <Grid item>
-            <Button variant="contained" color="primary" type="submit" >Sign up</Button>
+          <Grid item style={{marginTop: "15px"}}>
+            <Button variant="contained" type="submit" >Sign up</Button>
           </Grid>
           <Grid item>
             <Typography variant="subtitle2" component={Link} to="/">Already have an account? Log in</Typography>

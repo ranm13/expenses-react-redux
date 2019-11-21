@@ -25,7 +25,7 @@ const DepositsPieChart = function() {
     const transactions = useSelector(state => state.transactions)
     let deposits = countDepositByCategory(transactions)
     return (
-      <Grid item >
+      <Grid item style={{marginLeft: '2.5vw'}}>
         <Typography variant="h5">
           This Month Deposits
         </Typography>

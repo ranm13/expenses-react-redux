@@ -25,7 +25,7 @@ const WithdrawsPieChart = function() {
     const transactions = useSelector(state => state.transactions)
     let withdraws = countWithdrawsByCategory(transactions)
     return (
-      <Grid item style={{marginLeft: '5vw'}}>
+      <Grid item style={{marginLeft: '2.5vw'}}>
         <Typography variant="h5">
           This Month Withdraws
         </Typography>

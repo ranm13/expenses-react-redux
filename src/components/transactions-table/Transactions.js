@@ -30,6 +30,7 @@ const Transactions = function(){
                   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                   .map(t => <Transaction key={t._id} transaction={t}/>):
                   <Loader
+                  className="spinner"
                   type="Puff"
                   color="#E4061F"
                   height={100}

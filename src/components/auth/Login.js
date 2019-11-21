@@ -28,7 +28,7 @@ const Login = function(){
 
 return(
   <Grid container direction="column" justify="center" alignItems="center" spacing={10} >
-    <Paper style={{ margin: "25vh", padding: "5vh", width: "25vw", opacity: "0.95" }}>
+    <Paper className="login-form" >
       <form noValidate onSubmit={e => {
         e.preventDefault()
         dispatch(loginUser(loginInput))}}>
@@ -40,11 +40,11 @@ return(
                 </Grid>
                 <Grid item>
                     <TextField label="Password" error={errors.password || errors.passwordincorrect ? true: false} type="password" 
-                        onChange={e => setLoginInput({ ...loginInput, password: e.target.value})}/>
+                       onChange={e => setLoginInput({ ...loginInput, password: e.target.value})}/>
                     <Typography style={{color: "red"}}>{errors.password}{errors.passwordincorrect}</Typography>
                 </Grid>
                 <Grid item>
-                    <Button variant="contained" color="primary" type="submit">Login</Button>
+                    <Button variant="contained"  type="submit">Login</Button>
                 </Grid>
                 <Typography variant="subtitle2" component={Link} to="/register">Haven't got a user yet !? Click here to Register</Typography>
             </Grid>
