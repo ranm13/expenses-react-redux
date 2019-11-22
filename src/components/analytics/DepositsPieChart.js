@@ -29,13 +29,13 @@ const DepositsPieChart = function() {
         <Typography variant="h5">
           This Month Deposits
         </Typography>
-        <PieChart width={400} height={520} >
+        <PieChart width={320} height={420} >
           <Pie
             data={deposits}
             dataKey="value"
             label
             fill="#8884d8"
-            outerRadius={150}>
+            outerRadius={100}>
             {deposits.map(d => <Cell key={`cell-${deposits.indexOf(d)}`} fill={COLORS[deposits.indexOf(d)]} />)}
           </Pie>
           <Tooltip />

@@ -18,7 +18,7 @@ body{
     margin-left: 1.5vw;
     margin-right: 1.5vw;
     width:32vw;
-    height:64.5vh;
+    height:60vh;
     overflow:auto;
 }
 
@@ -26,13 +26,13 @@ body{
     padding: 15px;
     margin-left: 1.5vw;
     margin-top: 15px;
-    width:84vw;
+    width:80vw;
 }
 
 .charts-container{
     padding: 15px;
-    width: 50vw;
-    height: 64.5vh;
+    width: 46vw;
+    height: 60vh;
     text-align: center;
 }
 

@@ -4,12 +4,25 @@ const validateTransactionInput = require("../validation/transaction");
 const Transaction = require('../models/Transaction')
 const User = require('../models/User')
 
-router.get('/bymonth/:userId/:month', function(req, res){
+router.get('/bymonth/:userId/:month/:year', function(req, res){
     let userId = req.params.userId
     let month = req.params.month
-    Transaction.find({"committedBy": userId} ).exec(function(err, transactions){
-        res.send(transactions)
+    let year = req.params.year
+    const fromDate = new Date(year, month, 1);
+    const toDate = new Date(fromDate.getFullYear(), fromDate.getMonth() + 1, 0);
+    Transaction.find(
+        {
+            "date": 
+                {
+                    '$gte': fromDate,
+                     '$lte': toDate
+                },
+            "committedBy": userId
+        }
+        ).exec(function(err, transactions){
+            res.send(transactions)
     })
+
 })
 
 router.post('/transaction/:userId', function(req, res){
@@ -21,6 +34,7 @@ router.post('/transaction/:userId', function(req, res){
     let newTransaction = new Transaction(req.body)
     newTransaction.committedBy = userId
     newTransaction.save()
+    
     User.findById(userId).exec(function(err, user){
         switch(newTransaction.type){
             case("withdraw"): 

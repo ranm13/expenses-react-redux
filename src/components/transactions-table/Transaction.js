@@ -14,6 +14,8 @@ const getIconByTransactionType = function(transactionType){
                 return  <FaArrowDown style={{color: "red"}}/>
             case("deposit"):
                 return  <FaArrowUp style={{color: "green"}}/>
+            default:
+                return null
         }
     }
 

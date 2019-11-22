@@ -29,13 +29,13 @@ const WithdrawsPieChart = function() {
         <Typography variant="h5">
           This Month Withdraws
         </Typography>
-        <PieChart width={400} height={520} >
+        <PieChart width={320} height={420} >
           <Pie
             data={withdraws}
             dataKey="value"
             label
             fill="#8884d8"
-            outerRadius={150}>
+            outerRadius={100}>
             {withdraws.map(d => <Cell key={`cell-${withdraws.indexOf(d)}`} fill={COLORS[withdraws.indexOf(d)]} />)}
           </Pie>
           <Tooltip />

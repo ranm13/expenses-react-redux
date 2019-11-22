@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export const loadTransactions = (userId, month) => dispatch =>{
-    axios.get(`/transactions/bymonth/${userId}/${month}`)
+export const loadTransactions = (userId, month, year) => dispatch =>{
+    axios.get(`http://localhost:4000/transactions/bymonth/${userId}/${month}/${year}`)
         .then(({data})=> {
             dispatch({
                 type: 'LOAD_TRANSCTIONS',
@@ -12,7 +12,7 @@ export const loadTransactions = (userId, month) => dispatch =>{
 }
 
 export const deleteTransaction = (userId, transactionId) => dispatch =>{
-    axios.delete(`/transactions//transaction/${userId}/${transactionId}`)
+    axios.delete(`http://localhost:4000/transactions//transaction/${userId}/${transactionId}`)
         .then(({data})=> {
             dispatch({
                 type: 'DELETE_TRANSACTION',
@@ -23,7 +23,7 @@ export const deleteTransaction = (userId, transactionId) => dispatch =>{
 }
 
 export const pushTransaction = (userId, transaction) => dispatch =>{
-  axios.post(`/transactions//transaction/${userId}`, transaction)
+  axios.post(`http://localhost:4000/transactions//transaction/${userId}`, transaction)
         .then(({data})=> {
             dispatch({
                 type: 'PUSH_TRANSACTION',
