@@ -8,6 +8,7 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import { Paper } from '@material-ui/core';
 import Loader from 'react-loader-spinner'
+import MonthSelector from './MonthSelector';
 
 
 const Transactions = function(){
@@ -24,6 +25,7 @@ const Transactions = function(){
     return (
       <Grid item >
         <Paper className="table-container">
+          <MonthSelector />
           {
             transactions[0]? 
             <Table size="small">

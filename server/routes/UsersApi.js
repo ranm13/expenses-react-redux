@@ -12,6 +12,7 @@ router.post("/register", (req, res) => {
     if(!isValid){
       return res.status(400).json(errors);
     }
+
     User.findOne({ email: req.body.email }).then(user => {
       if(user){
         return res.status(400).json({ email: "Email already exists" });
@@ -22,7 +23,7 @@ router.post("/register", (req, res) => {
           balance: req.body.balance,
           password: req.body.password
         });
-    // Hash password before saving in database
+
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
@@ -42,6 +43,7 @@ router.post("/register", (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
+    
     const email = req.body.email;
     const password = req.body.password;
     User.findOne({ email }).then(user => {
@@ -50,7 +52,6 @@ router.post("/register", (req, res) => {
       }
       bcrypt.compare(password, user.password).then(isMatch => {
         if(isMatch){
-          // Create JWT Payload
           const payload = {
             id: user.id,
             name: user.name
@@ -59,7 +60,7 @@ router.post("/register", (req, res) => {
             payload,
             keys.secretOrKey,
             {
-              expiresIn: 31556926 // 1 year in seconds
+              expiresIn: 31556926 
             },
             (err, token) => {
               res.json({
