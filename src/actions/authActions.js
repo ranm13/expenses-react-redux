@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/users/register", userData)
+    .post("/users/register", userData)
     .then(res => history.push("/"))
     .catch(err =>
       dispatch({
@@ -16,7 +16,7 @@ export const registerUser = (userData, history) => dispatch => {
 
 export const loginUser = userData => dispatch => {
   axios
-    .post("http://localhost:4000/users/login", userData)
+    .post("/users/login", userData)
     .then(async res => {
       // Set token to localStorage
       const { token } = res.data;
@@ -59,7 +59,7 @@ export const logoutUser = () => dispatch => {
 
 export const loadBalance = userId => dispatch => {
   axios
-    .get(`http://localhost:4000/transactions/balance/${userId}`)
+    .get(`/transactions/balance/${userId}`)
     .then(res => dispatch({
       type: ('LOAD_BALANCE'),
       payload: res.data.balance
