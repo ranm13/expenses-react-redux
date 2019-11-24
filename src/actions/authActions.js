@@ -8,7 +8,7 @@ export const registerUser = (userData, history) => dispatch => {
     .then(res => history.push("/"))
     .catch(err =>
       dispatch({
-        type: ('GET_ERRORS'),
+        type: "GET_ERRORS",
         payload: err.response.data
       })
     );
@@ -24,14 +24,14 @@ export const loginUser = userData => dispatch => {
       setAuthToken(token);
       const decoded = jwt_decode(token);
       // Set current user
-    
+
       dispatch(setCurrentUser(decoded));
-      console.log(decoded.id)
-      dispatch(loadBalance(decoded.id))
+      console.log(decoded.id);
+      dispatch(loadBalance(decoded.id));
     })
     .catch(err =>
       dispatch({
-        type: ('GET_ERRORS'),
+        type: "GET_ERRORS",
         payload: err.response.data
       })
     );
@@ -39,15 +39,14 @@ export const loginUser = userData => dispatch => {
 
 export const setCurrentUser = decoded => {
   return {
-    type: ('SET_CURRENT_USER'),
+    type: "SET_CURRENT_USER",
     payload: decoded
   };
 };
 
-
 export const setUserLoading = () => {
   return {
-    type: ('USER_LOADING')
+    type: "USER_LOADING"
   };
 };
 
@@ -60,11 +59,11 @@ export const logoutUser = () => dispatch => {
 export const loadBalance = userId => dispatch => {
   axios
     .get(`/transactions/balance/${userId}`)
-    .then(res => dispatch({
-      type: ('LOAD_BALANCE'),
-      payload: res.data.balance
-    }))
-    .catch(err => console.log(err)
-      
-    );
+    .then(res =>
+      dispatch({
+        type: "LOAD_BALANCE",
+        payload: res.data.balance
+      })
+    )
+    .catch(err => console.log(err));
 };
